@@ -22,19 +22,5 @@
 		"psr-4": {
 			"Tests\\Bleicker\\Token\\": "tests"
 		}
-	},
-	"repositories": [
-		{
-			"type": "git",
-			"url": "git@bitbucket.org:cbleicker/bleicker-objectmanager.git"
-		},
-		{
-			"type": "git",
-			"url": "git@bitbucket.org:cbleicker/bleicker-exception.git"
-		},
-		{
-			"type": "git",
-			"url": "git@bitbucket.org:cbleicker/bleicker-session.git"
-		}
-	]
+	}
 }
