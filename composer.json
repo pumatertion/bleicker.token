@@ -1,0 +1,40 @@
+{
+	"name": "bleicker/token",
+	"require": {
+		"bleicker/objectmanager": "~1.0",
+		"bleicker/session": "@dev"
+	},
+	"require-dev": {
+		"phpunit/phpunit": "*"
+	},
+	"authors": [
+		{
+			"name": "Carsten Bleicker",
+			"email": "carsten@bleicker.de"
+		}
+	],
+	"autoload": {
+		"psr-4": {
+			"Bleicker\\Token\\": "src"
+		}
+	},
+	"autoload-dev": {
+		"psr-4": {
+			"Tests\\Bleicker\\Token\\": "tests"
+		}
+	},
+	"repositories": [
+		{
+			"type": "git",
+			"url": "git@bitbucket.org:cbleicker/bleicker-objectmanager.git"
+		},
+		{
+			"type": "git",
+			"url": "git@bitbucket.org:cbleicker/bleicker-exception.git"
+		},
+		{
+			"type": "git",
+			"url": "git@bitbucket.org:cbleicker/bleicker-session.git"
+		}
+	]
+}
