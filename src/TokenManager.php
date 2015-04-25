@@ -21,9 +21,9 @@ class TokenManager implements TokenManagerInterface {
 
 	/**
 	 * @param string $alias
-	 * @param TokenInterface $token
+	 * @param PrototypeTokenInterface $token
 	 */
-	public static function registerPrototypeToken($alias, TokenInterface $token) {
+	public static function registerPrototypeToken($alias, PrototypeTokenInterface $token) {
 		static::$prototypeTokens[$alias] = $token;
 	}
 
@@ -43,7 +43,7 @@ class TokenManager implements TokenManagerInterface {
 
 	/**
 	 * @param string $alias
-	 * @return TokenInterface|NULL
+	 * @return PrototypeTokenInterface|NULL
 	 */
 	public static function getPrototypeToken($alias) {
 		if (static::hasToken($alias)) {
@@ -54,7 +54,7 @@ class TokenManager implements TokenManagerInterface {
 
 	/**
 	 * @param $alias
-	 * @return TokenInterface|NULL
+	 * @return PrototypeTokenInterface|NULL
 	 */
 	public static function getSessionToken($alias) {
 		if (self::hasSessionToken($alias)) {

@@ -3,7 +3,7 @@
 namespace Bleicker\Token;
 
 /**
- * Class AbstractToken
+ * Class AbstractPrototypeToken
  *
  * @package Bleicker\Token
  */
@@ -17,7 +17,7 @@ abstract class AbstractSessionToken implements SessionTokenInterface {
 	/**
 	 * @var string
 	 */
-	protected $status = TokenInterface::AUTHENTICATION_NOCREDENTIALSGIVEN;
+	protected $status = PrototypeTokenInterface::AUTHENTICATION_NOCREDENTIALSGIVEN;
 
 	/**
 	 * @return string

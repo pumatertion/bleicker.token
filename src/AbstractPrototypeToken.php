@@ -3,11 +3,11 @@
 namespace Bleicker\Token;
 
 /**
- * Class AbstractToken
+ * Class AbstractPrototypeToken
  *
  * @package Bleicker\Token
  */
-abstract class AbstractToken implements TokenInterface {
+abstract class AbstractPrototypeToken implements PrototypeTokenInterface {
 
 	/**
 	 * @var string
@@ -17,7 +17,7 @@ abstract class AbstractToken implements TokenInterface {
 	/**
 	 * @var string
 	 */
-	protected $status = TokenInterface::AUTHENTICATION_NOCREDENTIALSGIVEN;
+	protected $status = PrototypeTokenInterface::AUTHENTICATION_NOCREDENTIALSGIVEN;
 
 	/**
 	 * @return string

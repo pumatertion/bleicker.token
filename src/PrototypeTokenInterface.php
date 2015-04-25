@@ -3,11 +3,11 @@
 namespace Bleicker\Token;
 
 /**
- * Interface TokenInterface
+ * Interface PrototypeTokenInterface
  *
  * @package Bleicker\Token
  */
-interface TokenInterface {
+interface PrototypeTokenInterface {
 
 	const AUTHENTICATION_NOCREDENTIALSGIVEN = 'authenticationNoCredentialsGiven',
 		AUTHENTICATION_REQUIRED = 'authenticationRequired',

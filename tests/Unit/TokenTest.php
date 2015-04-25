@@ -2,7 +2,7 @@
 
 namespace Tests\Bleicker\Token\Unit;
 
-use Bleicker\Token\TokenInterface;
+use Bleicker\Token\PrototypeTokenInterface;
 use Tests\Bleicker\Token\Unit\Fixtures\FailingToken;
 use Tests\Bleicker\Token\Unit\Fixtures\NoCredentialsToken;
 use Tests\Bleicker\Token\Unit\Fixtures\SuccessSessionToken;
@@ -21,13 +21,13 @@ class TokenTest extends UnitTestCase {
 	 */
 	public function noCredentialsTokenTest() {
 		$token = new NoCredentialsToken();
-		$this->assertEquals(TokenInterface::AUTHENTICATION_NOCREDENTIALSGIVEN, $token->getStatus(), 'No Credentials');
+		$this->assertEquals(PrototypeTokenInterface::AUTHENTICATION_NOCREDENTIALSGIVEN, $token->getStatus(), 'No Credentials');
 
 		$token->injectCredentialsAndSetStatus();
-		$this->assertEquals(TokenInterface::AUTHENTICATION_NOCREDENTIALSGIVEN, $token->getStatus(), 'No Credentials injected');
+		$this->assertEquals(PrototypeTokenInterface::AUTHENTICATION_NOCREDENTIALSGIVEN, $token->getStatus(), 'No Credentials injected');
 
 		$token->authenticate();
-		$this->assertEquals(TokenInterface::AUTHENTICATION_NOCREDENTIALSGIVEN, $token->getStatus(), 'No Credentials after authentication');
+		$this->assertEquals(PrototypeTokenInterface::AUTHENTICATION_NOCREDENTIALSGIVEN, $token->getStatus(), 'No Credentials after authentication');
 	}
 
 	/**
@@ -35,13 +35,13 @@ class TokenTest extends UnitTestCase {
 	 */
 	public function failingTokenTest() {
 		$token = new FailingToken();
-		$this->assertEquals(TokenInterface::AUTHENTICATION_NOCREDENTIALSGIVEN, $token->getStatus(), 'No Credentials');
+		$this->assertEquals(PrototypeTokenInterface::AUTHENTICATION_NOCREDENTIALSGIVEN, $token->getStatus(), 'No Credentials');
 
 		$token->injectCredentialsAndSetStatus();
-		$this->assertEquals(TokenInterface::AUTHENTICATION_REQUIRED, $token->getStatus(), 'Credentials injected and Auth required');
+		$this->assertEquals(PrototypeTokenInterface::AUTHENTICATION_REQUIRED, $token->getStatus(), 'Credentials injected and Auth required');
 
 		$token->authenticate();
-		$this->assertEquals(TokenInterface::AUTHENTICATION_FAILED, $token->getStatus(), 'Authentication failed with injected credentials');
+		$this->assertEquals(PrototypeTokenInterface::AUTHENTICATION_FAILED, $token->getStatus(), 'Authentication failed with injected credentials');
 	}
 
 	/**
@@ -49,13 +49,13 @@ class TokenTest extends UnitTestCase {
 	 */
 	public function successTokenTest() {
 		$token = new SuccessToken();
-		$this->assertEquals(TokenInterface::AUTHENTICATION_NOCREDENTIALSGIVEN, $token->getStatus(), 'No Credentials');
+		$this->assertEquals(PrototypeTokenInterface::AUTHENTICATION_NOCREDENTIALSGIVEN, $token->getStatus(), 'No Credentials');
 
 		$token->injectCredentialsAndSetStatus();
-		$this->assertEquals(TokenInterface::AUTHENTICATION_REQUIRED, $token->getStatus(), 'Credentials injected and Auth required');
+		$this->assertEquals(PrototypeTokenInterface::AUTHENTICATION_REQUIRED, $token->getStatus(), 'Credentials injected and Auth required');
 
 		$token->authenticate();
-		$this->assertEquals(TokenInterface::AUTHENTICATION_SUCCESS, $token->getStatus(), 'Authentication failed with injected credentials');
+		$this->assertEquals(PrototypeTokenInterface::AUTHENTICATION_SUCCESS, $token->getStatus(), 'Authentication failed with injected credentials');
 	}
 
 	/**
@@ -63,12 +63,12 @@ class TokenTest extends UnitTestCase {
 	 */
 	public function successSessionTokenTest() {
 		$token = new SuccessSessionToken();
-		$this->assertEquals(TokenInterface::AUTHENTICATION_NOCREDENTIALSGIVEN, $token->getStatus(), 'No Credentials');
+		$this->assertEquals(PrototypeTokenInterface::AUTHENTICATION_NOCREDENTIALSGIVEN, $token->getStatus(), 'No Credentials');
 
 		$token->injectCredentialsAndSetStatus();
-		$this->assertEquals(TokenInterface::AUTHENTICATION_REQUIRED, $token->getStatus(), 'Credentials injected and Auth required');
+		$this->assertEquals(PrototypeTokenInterface::AUTHENTICATION_REQUIRED, $token->getStatus(), 'Credentials injected and Auth required');
 
 		$token->authenticate();
-		$this->assertEquals(TokenInterface::AUTHENTICATION_SUCCESS, $token->getStatus(), 'Authentication failed with injected credentials');
+		$this->assertEquals(PrototypeTokenInterface::AUTHENTICATION_SUCCESS, $token->getStatus(), 'Authentication failed with injected credentials');
 	}
 }
