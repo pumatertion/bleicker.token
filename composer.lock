@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "1bdb556c76bd7cf51989c32c562f05b3",
+    "hash": "7651e2dca2c20f2cef87c4d8c86c02f4",
     "packages": [
         {
             "name": "bleicker/exception",
@@ -66,11 +66,11 @@
         },
         {
             "name": "bleicker/session",
-            "version": "dev-master",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "git@bitbucket.org:cbleicker/bleicker-session.git",
-                "reference": "262f346b61675a34136fabf2393fadffbea563c3"
+                "reference": "dde2c90569e05a471856047664a944ac9062061f"
             },
             "require": {
                 "symfony/http-foundation": "~2.6"
@@ -95,7 +95,7 @@
                     "email": "carsten@bleicker.de"
                 }
             ],
-            "time": "2015-04-25 12:38:11"
+            "time": "2015-04-25 14:26:09"
         },
         {
             "name": "symfony/http-foundation",
@@ -1113,9 +1113,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "bleicker/session": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
