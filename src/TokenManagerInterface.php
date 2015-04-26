@@ -11,6 +11,7 @@ interface TokenManagerInterface {
 	/**
 	 * @param string $alias
 	 * @param PrototypeTokenInterface $token
+	 * @return static
 	 */
 	public static function registerPrototypeToken($alias, PrototypeTokenInterface $token);
 
