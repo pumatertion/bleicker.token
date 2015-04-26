@@ -15,21 +15,19 @@ class TokenManager implements TokenManagerInterface {
 	const SESSION_INDEX = 'TOKENS';
 
 	/**
-	 * @var array
-	 */
-	public static $prototypeTokens = [];
-
-	/**
 	 * @param string $alias
 	 * @param PrototypeTokenInterface $token
+	 * @return static
 	 */
 	public static function registerPrototypeToken($alias, PrototypeTokenInterface $token) {
-		static::$prototypeTokens[$alias] = $token;
+		PrototypeTokenContainer::add($alias, $token);
+		return new static;
 	}
 
 	/**
 	 * @param string $alias
 	 * @param SessionTokenInterface $token
+	 * @return static
 	 */
 	public static function registerSessionToken($alias, SessionTokenInterface $token) {
 		if (!self::hasSessionToken($alias)) {
@@ -39,6 +37,7 @@ class TokenManager implements TokenManagerInterface {
 			$tokens[$alias] = $token;
 			self::setSessionTokens($tokens);
 		}
+		return new static;
 	}
 
 	/**
@@ -46,10 +45,7 @@ class TokenManager implements TokenManagerInterface {
 	 * @return PrototypeTokenInterface|NULL
 	 */
 	public static function getPrototypeToken($alias) {
-		if (static::hasToken($alias)) {
-			return static::$prototypeTokens[$alias];
-		}
-		return NULL;
+		return PrototypeTokenContainer::get($alias);
 	}
 
 	/**
@@ -69,7 +65,7 @@ class TokenManager implements TokenManagerInterface {
 	 * @return boolean
 	 */
 	public static function hasToken($alias) {
-		return array_key_exists($alias, static::$prototypeTokens);
+		return PrototypeTokenContainer::has($alias);
 	}
 
 	/**
@@ -82,18 +78,20 @@ class TokenManager implements TokenManagerInterface {
 
 	/**
 	 * @param array $tokens
+	 * @return static
 	 */
 	public static function setSessionTokens(array $tokens = array()){
 		/** @var SessionInterface $session */
 		$session = ObjectManager::get(SessionInterface::class);
 		$session->set(self::SESSION_INDEX, $tokens);
+		return new static;
 	}
 
 	/**
 	 * @return array
 	 */
 	public static function getPrototypeTokens() {
-		return static::$prototypeTokens;
+		return PrototypeTokenContainer::storage();
 	}
 
 	/**

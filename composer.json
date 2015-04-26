@@ -2,7 +2,8 @@
 	"name": "bleicker/token",
 	"require": {
 		"bleicker/objectmanager": "~1.0",
-		"bleicker/session": "~1.0"
+		"bleicker/session": "~1.0",
+		"bleicker/container": "~1.0"
 	},
 	"require-dev": {
 		"phpunit/phpunit": "*"
