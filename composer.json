@@ -1,5 +1,6 @@
 {
 	"name": "bleicker/token",
+	"type": "library",
 	"require": {
 		"bleicker/objectmanager": "~1.0",
 		"bleicker/session": "~1.0",
