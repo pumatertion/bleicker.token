@@ -3,6 +3,7 @@
 namespace Tests\Bleicker\Token\Unit;
 
 use Bleicker\Token\Tokens;
+use Tests\Bleicker\Token\Unit\Fixtures\SuccessToken;
 use Tests\Bleicker\Token\Unit\Fixtures\TokenToRegister;
 use Tests\Bleicker\Token\UnitTestCase;
 
@@ -26,9 +27,8 @@ class RegisterTest extends UnitTestCase {
 	/**
 	 * @test
 	 */
-	public function registerTest(){
-		TokenToRegister::register('foo');
-		$this->assertInstanceOf(TokenToRegister::class, Tokens::get('foo'));
+	public function registerTest() {
+		SuccessToken::register('foo');
+		$this->assertInstanceOf(SuccessToken::class, Tokens::get('foo'));
 	}
-
 }
