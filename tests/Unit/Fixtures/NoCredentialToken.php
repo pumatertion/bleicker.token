@@ -5,17 +5,16 @@ namespace Tests\Bleicker\Token\Unit\Fixtures;
 use Bleicker\Token\AbstractToken;
 
 /**
- * Class SuccessToken
+ * Class NoCredentialToken
  *
  * @package Tests\Bleicker\Token\Unit\Fixtures
  */
-class SuccessToken extends AbstractToken {
+class NoCredentialToken extends AbstractToken {
 
 	/**
 	 * @return void
 	 */
 	public function injectCredential() {
-		$this->credential = 'foo';
 	}
 
 	/**

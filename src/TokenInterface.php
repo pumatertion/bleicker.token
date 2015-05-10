@@ -3,26 +3,26 @@
 namespace Bleicker\Token;
 
 /**
- * Interface PrototypeTokenInterface
+ * Class TokenInterface
  *
  * @package Bleicker\Token
  */
-interface PrototypeTokenInterface {
+interface TokenInterface {
 
-	const AUTHENTICATION_NOCREDENTIALSGIVEN = 'authenticationNoCredentialsGiven',
+	const AUTHENTICATION_NOT_REQUIRED = 'authenticationNotRequired',
 		AUTHENTICATION_REQUIRED = 'authenticationRequired',
 		AUTHENTICATION_FAILED = 'authenticationFailed',
 		AUTHENTICATION_SUCCESS = 'authenticationSuccess';
 
 	/**
-	 * @return $this
+	 * @return void
 	 */
-	public function injectCredentialsAndSetStatus();
+	public function injectCredential();
 
 	/**
-	 * @return mixed
+	 * @return boolean
 	 */
-	public function getCredentials();
+	public function isCredentialValid();
 
 	/**
 	 * @return string
@@ -33,4 +33,10 @@ interface PrototypeTokenInterface {
 	 * @return $this
 	 */
 	public function authenticate();
+
+	/**
+	 * @param string $alias
+	 * @return static
+	 */
+	public static function register($alias = NULL);
 }
