@@ -11,4 +11,20 @@ use Bleicker\Container\AbstractContainer;
  */
 class Tokens extends AbstractContainer implements TokensInterface {
 
+	/**
+	 * @param string $alias
+	 * @return TokenInterface
+	 */
+	public static function get($alias) {
+		return parent::get($alias);
+	}
+
+	/**
+	 * @param string $alias
+	 * @param TokenInterface $data
+	 * @return static
+	 */
+	public static function add($alias, $data) {
+		return parent::add($alias, $data);
+	}
 }
