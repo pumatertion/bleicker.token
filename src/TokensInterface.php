@@ -23,7 +23,7 @@ interface TokensInterface {
 
 	/**
 	 * @param string $alias
-	 * @param mixed $data
+	 * @param TokenInterface $data
 	 * @return static
 	 * @throws AliasAlreadyExistsException
 	 */
@@ -36,7 +36,7 @@ interface TokensInterface {
 
 	/**
 	 * @param string $alias
-	 * @return mixed
+	 * @return TokenInterface
 	 */
 	public static function get($alias);
 
