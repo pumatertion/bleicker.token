@@ -12,6 +12,11 @@ use Bleicker\Container\AbstractContainer;
 class Tokens extends AbstractContainer implements TokensInterface {
 
 	/**
+	 * @var array
+	 */
+	public static $storage = [];
+
+	/**
 	 * @param string $alias
 	 * @return TokenInterface
 	 */
