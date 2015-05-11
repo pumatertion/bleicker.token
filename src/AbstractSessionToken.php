@@ -30,4 +30,12 @@ abstract class AbstractSessionToken extends AbstractToken implements SessionToke
 	public final function getSessionKey() {
 		return static::class;
 	}
+
+	/**
+	 * @return boolean
+	 */
+	public function logout() {
+		$this->clearSession();
+		return parent::logout();
+	}
 }

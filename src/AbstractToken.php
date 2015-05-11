@@ -96,4 +96,13 @@ abstract class AbstractToken implements TokenInterface {
 		$tokens->add($alias, $instance);
 		return $instance;
 	}
+
+	/**
+	 * @return boolean
+	 */
+	public function logout() {
+		$this->getCredential()->setAccount();
+		$this->getCredential()->setValue();
+		return TRUE;
+	}
 }

@@ -34,11 +34,8 @@ class SessionNotExistsToken extends AbstractSessionToken {
 	}
 
 	/**
-	 * @return boolean
+	 * @return void
 	 */
-	public function logout() {
-		$this->getCredential()->setAccount();
-		$this->getCredential()->setValue();
-		return TRUE;
+	public function clearSession() {
 	}
 }

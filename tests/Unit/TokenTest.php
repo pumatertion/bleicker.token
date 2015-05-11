@@ -75,8 +75,13 @@ class TokenTest extends UnitTestCase {
 	/**
 	 * @test
 	 */
-	public function logoutTokenTest() {
+	public function logoutTokensTest() {
 		$token = new SessionExistsToken();
+		$token->authenticate()->logout();
+		$this->assertNull($token->getCredential()->getValue());
+		$this->assertNull($token->getCredential()->getAccount());
+
+		$token = new SuccessToken();
 		$token->authenticate()->logout();
 		$this->assertNull($token->getCredential()->getValue());
 		$this->assertNull($token->getCredential()->getAccount());

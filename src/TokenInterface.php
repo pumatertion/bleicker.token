@@ -46,4 +46,9 @@ interface TokenInterface {
 	 * @return static
 	 */
 	public static function register($alias = NULL);
+
+	/**
+	 * @return boolean
+	 */
+	public function logout();
 }
