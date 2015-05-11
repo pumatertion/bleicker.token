@@ -71,4 +71,14 @@ class TokenTest extends UnitTestCase {
 		$this->assertEquals(TokenInterface::AUTHENTICATION_NOT_REQUIRED, $token->getStatus());
 		$this->assertNull($token->getCredential()->getAccount());
 	}
+
+	/**
+	 * @test
+	 */
+	public function logoutTokenTest() {
+		$token = new SessionExistsToken();
+		$token->authenticate()->logout();
+		$this->assertNull($token->getCredential()->getValue());
+		$this->assertNull($token->getCredential()->getAccount());
+	}
 }

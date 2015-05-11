@@ -22,4 +22,9 @@ interface SessionTokenInterface extends TokenInterface {
 	 * @return AccountInterface
 	 */
 	public function reconstituteAccountFromSession();
+
+	/**
+	 * @return boolean
+	 */
+	public function logout();
 }

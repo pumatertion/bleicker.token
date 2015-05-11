@@ -32,4 +32,13 @@ class SessionNotExistsToken extends AbstractSessionToken {
 	public function reconstituteAccountFromSession() {
 		return NULL;
 	}
+
+	/**
+	 * @return boolean
+	 */
+	public function logout() {
+		$this->getCredential()->setAccount();
+		$this->getCredential()->setValue();
+		return TRUE;
+	}
 }
