@@ -16,14 +16,15 @@ class SuccessToken extends AbstractToken {
 	 * @return void
 	 */
 	public function injectCredential() {
-		$this->credential = 'foo';
+		$this->getCredential()->setValue('foo');
 	}
 
 	/**
 	 * @return $this
 	 */
 	public function fetchAndSetAccount() {
-		$this->account = new Account();
+		$account = new Account('john');
+		$this->getCredential()->setAccount($account);
 		return $this;
 	}
 }

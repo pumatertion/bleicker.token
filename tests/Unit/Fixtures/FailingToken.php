@@ -15,14 +15,14 @@ class FailingToken extends AbstractToken {
 	 * @return void
 	 */
 	public function injectCredential() {
-		$this->credential = 'bar';
+		$this->getCredential()->setValue('bar');
 	}
 
 	/**
 	 * @return $this
 	 */
 	public function fetchAndSetAccount() {
-		$this->account = NULL;
+		$this->getCredential()->setAccount(NULL);
 		return $this;
 	}
 }
