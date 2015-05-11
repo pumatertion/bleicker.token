@@ -19,9 +19,10 @@ class FailingToken extends AbstractToken {
 	}
 
 	/**
-	 * @return boolean
+	 * @return $this
 	 */
-	public function isCredentialValid() {
-		return $this->getCredential() === 'foo';
+	public function fetchAndSetAccount() {
+		$this->account = NULL;
+		return $this;
 	}
 }

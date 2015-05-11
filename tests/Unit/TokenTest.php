@@ -2,6 +2,7 @@
 
 namespace Tests\Bleicker\Token\Unit;
 
+use Bleicker\Account\AccountInterface;
 use Bleicker\Token\TokenInterface;
 use Tests\Bleicker\Token\Unit\Fixtures\FailingToken;
 use Tests\Bleicker\Token\Unit\Fixtures\NoCredentialToken;
@@ -21,7 +22,9 @@ class TokenTest extends UnitTestCase {
 	 */
 	public function successTokenTest() {
 		$token = new SuccessToken();
-		$this->assertEquals(TokenInterface::AUTHENTICATION_SUCCESS, $token->authenticate()->getStatus());
+		$token->authenticate();
+		$this->assertEquals(TokenInterface::AUTHENTICATION_SUCCESS, $token->getStatus());
+		$this->assertInstanceOf(AccountInterface::class, $token->getAccount());
 	}
 
 	/**
@@ -29,7 +32,9 @@ class TokenTest extends UnitTestCase {
 	 */
 	public function noCredentialsTokenTest() {
 		$token = new NoCredentialToken();
-		$this->assertEquals(TokenInterface::AUTHENTICATION_NOT_REQUIRED, $token->authenticate()->getStatus());
+		$token->authenticate();
+		$this->assertEquals(TokenInterface::AUTHENTICATION_NOT_REQUIRED, $token->getStatus());
+		$this->assertNull($token->getAccount());
 	}
 
 	/**
@@ -37,6 +42,8 @@ class TokenTest extends UnitTestCase {
 	 */
 	public function failingTokenTest() {
 		$token = new FailingToken();
-		$this->assertEquals(TokenInterface::AUTHENTICATION_FAILED, $token->authenticate()->getStatus());
+		$token->authenticate();
+		$this->assertEquals(TokenInterface::AUTHENTICATION_FAILED, $token->getStatus());
+		$this->assertNull($token->getAccount());
 	}
 }

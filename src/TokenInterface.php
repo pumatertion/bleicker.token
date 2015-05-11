@@ -2,6 +2,8 @@
 
 namespace Bleicker\Token;
 
+use Bleicker\Account\AccountInterface;
+
 /**
  * Class TokenInterface
  *
@@ -15,14 +17,19 @@ interface TokenInterface {
 		AUTHENTICATION_SUCCESS = 'authenticationSuccess';
 
 	/**
+	 * @return AccountInterface
+	 */
+	public function getAccount();
+
+	/**
 	 * @return void
 	 */
 	public function injectCredential();
 
 	/**
-	 * @return boolean
+	 * @return $this
 	 */
-	public function isCredentialValid();
+	public function fetchAndSetAccount();
 
 	/**
 	 * @return string
