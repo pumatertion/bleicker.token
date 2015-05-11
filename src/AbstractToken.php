@@ -103,6 +103,7 @@ abstract class AbstractToken implements TokenInterface {
 	public function logout() {
 		$this->getCredential()->setAccount();
 		$this->getCredential()->setValue();
+		$this->status = TokenInterface::AUTHENTICATION_NOT_REQUIRED;
 		return TRUE;
 	}
 }
