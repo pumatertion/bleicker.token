@@ -33,4 +33,13 @@ class SessionExistsToken extends AbstractSessionToken {
 	public function reconstituteAccountFromSession() {
 		return new Account('john');
 	}
+
+	/**
+	 * @return boolean
+	 */
+	public function logout() {
+		$this->getCredential()->setAccount();
+		$this->getCredential()->setValue();
+		return TRUE;
+	}
 }

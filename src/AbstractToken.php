@@ -63,7 +63,7 @@ abstract class AbstractToken implements TokenInterface {
 			return $this;
 		}
 
-		if($this->getCredential()->getAccount() === NULL){
+		if ($this->getCredential()->getAccount() === NULL) {
 			$this->fetchAndSetAccount();
 		}
 
