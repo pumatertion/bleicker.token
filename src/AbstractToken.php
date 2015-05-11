@@ -2,6 +2,8 @@
 
 namespace Bleicker\Token;
 
+use Bleicker\Account\Credential;
+use Bleicker\Account\CredentialInterface;
 use Bleicker\ObjectManager\ObjectManager;
 use ReflectionClass;
 
@@ -13,7 +15,7 @@ use ReflectionClass;
 abstract class AbstractToken implements TokenInterface {
 
 	/**
-	 * @var string
+	 * @var CredentialInterface
 	 */
 	protected $credential;
 
@@ -22,20 +24,24 @@ abstract class AbstractToken implements TokenInterface {
 	 */
 	protected $status = TokenInterface::AUTHENTICATION_NOT_REQUIRED;
 
+	public function __construct() {
+		$this->credential = new Credential();
+	}
+
 	/**
 	 * @return $this
 	 */
 	protected function initialize() {
 		$this->injectCredential();
-		if ($this->credential !== NULL) {
+		if ($this->getCredential()->getValue() !== NULL && $this->getCredential()->getAccount() === NULL) {
 			$this->status = TokenInterface::AUTHENTICATION_REQUIRED;
 		}
 	}
 
 	/**
-	 * @return string
+	 * @return CredentialInterface
 	 */
-	protected function getCredential() {
+	public function getCredential() {
 		return $this->credential;
 	}
 
@@ -57,7 +63,11 @@ abstract class AbstractToken implements TokenInterface {
 			return $this;
 		}
 
-		if ($this->isCredentialValid()) {
+		if($this->getCredential()->getAccount() === NULL){
+			$this->fetchAndSetAccount();
+		}
+
+		if ($this->getCredential()->getAccount() !== NULL) {
 			$this->status = self::AUTHENTICATION_SUCCESS;
 			return $this;
 		}
