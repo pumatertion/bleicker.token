@@ -63,7 +63,7 @@ abstract class AbstractToken implements TokenInterface {
 			return $this;
 		}
 
-		if($this->getCredential()->getAccount() === NULL){
+		if ($this->getCredential()->getAccount() === NULL) {
 			$this->fetchAndSetAccount();
 		}
 
@@ -95,5 +95,15 @@ abstract class AbstractToken implements TokenInterface {
 		});
 		$tokens->add($alias, $instance);
 		return $instance;
+	}
+
+	/**
+	 * @return boolean
+	 */
+	public function logout() {
+		$this->getCredential()->setAccount();
+		$this->getCredential()->setValue();
+		$this->status = TokenInterface::AUTHENTICATION_NOT_REQUIRED;
+		return TRUE;
 	}
 }
