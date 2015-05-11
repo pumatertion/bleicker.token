@@ -25,7 +25,7 @@ abstract class AbstractToken implements TokenInterface {
 	/**
 	 * @return $this
 	 */
-	protected final function initialize() {
+	protected function initialize() {
 		$this->injectCredential();
 		if ($this->credential !== NULL) {
 			$this->status = TokenInterface::AUTHENTICATION_REQUIRED;
@@ -35,21 +35,21 @@ abstract class AbstractToken implements TokenInterface {
 	/**
 	 * @return string
 	 */
-	protected final function getCredential() {
+	protected function getCredential() {
 		return $this->credential;
 	}
 
 	/**
 	 * @return string
 	 */
-	public final function getStatus() {
+	public function getStatus() {
 		return $this->status;
 	}
 
 	/**
 	 * @return $this
 	 */
-	public final function authenticate() {
+	public function authenticate() {
 
 		$this->initialize();
 
@@ -70,7 +70,7 @@ abstract class AbstractToken implements TokenInterface {
 	 * @param string $alias
 	 * @return static
 	 */
-	public static final function register($alias = NULL) {
+	public static function register($alias = NULL) {
 		if ($alias === NULL) {
 			$alias = static::class;
 		}
