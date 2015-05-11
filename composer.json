@@ -5,7 +5,7 @@
 		"bleicker/objectmanager": "1.1.*",
 		"bleicker/session": "1.0.*",
 		"bleicker/container": "1.0.*",
-		"bleicker/account": "dev-develop"
+		"bleicker/account": "1.0.*"
 	},
 	"require-dev": {
 		"phpunit/phpunit": "*"
