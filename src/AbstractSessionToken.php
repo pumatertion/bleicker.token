@@ -16,12 +16,17 @@ abstract class AbstractSessionToken extends AbstractToken implements SessionToke
 	 * @return $this
 	 */
 	protected function initialize() {
+		parent::initialize();
+		if ($this->status === TokenInterface::AUTHENTICATION_REQUIRED) {
+			$this->clearSession();
+			return $this;
+		}
 		$reconstitutedAccountFromSession = $this->reconstituteAccountFromSession();
 		if ($reconstitutedAccountFromSession instanceof AccountInterface) {
 			$this->credential = new Credential(SessionTokenInterface::CREDENTIAL_VALUE, $reconstitutedAccountFromSession);
 			$this->status = TokenInterface::AUTHENTICATION_SUCCESS;
 		}
-		return parent::initialize();
+		return $this;
 	}
 
 	/**
